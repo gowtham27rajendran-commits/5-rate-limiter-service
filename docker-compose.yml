@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+  api:
+    build: .
+    ports: ["8000:8000"]
+    depends_on: [redis]
+    environment:
+      - REDIS_URL=redis://redis:6379/0
