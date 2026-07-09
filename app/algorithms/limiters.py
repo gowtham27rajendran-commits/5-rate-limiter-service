@@ -1,9 +1,4 @@
-"""
-Rate Limiting Algorithms — all backed by Redis for distributed correctness.
 
-Key insight: every algorithm must be ATOMIC — check + update must be one operation.
-Redis Lua scripts achieve this: they run on the server, cannot be interrupted.
-"""
 import time
 import redis
 from abc import ABC, abstractmethod
